@@ -501,6 +501,9 @@
             this.containerEl.style.webkitAnimation = '';
             this.playCount++;
 
+            var box = document.getElementById("messageBox");
+            box.style.visibility="hidden";
+
             // Handle tabbing off the page. Pause the current game.
             document.addEventListener(Runner.events.VISIBILITY,
                 this.onVisibilityChange.bind(this));
