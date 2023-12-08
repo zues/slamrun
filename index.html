@@ -16,7 +16,7 @@
 <body id="t" class="offline">
     <div class="box">
         <div id="messageBox" class="sendmessage">
-            <h1 style="text-align: center;">Press Arrow Up to Start</h1>
+            <h1 style="text-align: center;" id="messageBoxText">Press Arrow-Up to Start</h1>
             <div class="niokbutton" onclick="okbuttonsend()"></div>
         </div>
         <div id="main-frame-error" class="interstitial-wrapper">
@@ -39,11 +39,26 @@
 <script>
     document.onkeydown = function(evt) {
     evt = evt || window.event;
-    if (evt.keyCode == 38) {
+    if (evt.keyCode == 38 || evt.keyCode == 32) {
         var box = document.getElementById("messageBox");
         box.style.visibility="hidden";
     }
 };
+
+
+function istMobileGeraet() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+if (istMobileGeraet()) {
+    // Element nach ID erhalten
+    var element = document.getElementById("messageBoxText");
+
+    // Inhalt des Elements ändern
+    element.innerHTML = "Neuer Inhalt";
+} else {
+    console.log("Tab to Start");
+}
 </script>
     
 </html>
